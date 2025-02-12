@@ -1,0 +1,19 @@
+// Jenkinsfile-PipelineB
+
+@Library('jenkins-templating-engine') _
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Initialize') {
+            steps {
+                script {
+                    // Load the base config and merge it with Pipeline B's specific config
+                    load 'pipeline_config.groovy' // Base config
+                    load 'pipeline_config_PipelineB.groovy' // Pipeline B's specific config
+                }
+            }
+        }
+    }
+}
